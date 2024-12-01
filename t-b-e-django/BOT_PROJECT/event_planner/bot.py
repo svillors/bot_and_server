@@ -12,14 +12,13 @@ django.setup()
 try:
     from event_planner.models import Speaker, Question, User, Organizer
     from event_planner.utils import get_schedule, get_user_role, remove_expired_speakers
-    from event_planner.helpers import create_inline_keyboard, create_reply_keyboard, is_ask_question_command, is_about_command, is_sent_donat, is_speaker_selected, is_speaker_selected_state, is_view_questions_command
+    from event_planner.helpers import create_inline_keyboard, create_reply_keyboard, is_ask_question_command, is_about_command, is_sent_donat, is_speaker_selected, is_speaker_selected_state, is_view_questions_command, user_states
 except Exception as e:
     print(f"Error importing models: {e}")
 
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 bot = TeleBot(TELEGRAM_BOT_TOKEN)
-user_states = {}
 
 
 def main():
