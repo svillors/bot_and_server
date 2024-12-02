@@ -26,8 +26,7 @@ def get_schedule():
 
     schedule = (
         f'Мероприятие: {event} '
-        f'{event.start_event.strftime(
-            '%H:%M')} - {event.end_event.strftime('%H:%M')}\n\n'
+        f'{event.start_event.strftime('%H:%M')} - {event.end_event.strftime('%H:%M')}\n\n'
     )
     sessions = event.sessions.all().order_by('start_session')
 
@@ -41,8 +40,7 @@ def get_schedule():
             schedule += (
                 f'  - Доклад: {speaker_session} от {
                     speaker_session.speaker.name} '
-                f'{speaker_session.start_session.strftime(
-                    '%H:%M')} - {speaker_session.end_session.strftime('%H:%M')}\n'
+                f'{speaker_session.start_session.strftime('%H:%M')} - {speaker_session.end_session.strftime('%H:%M')}\n'
             )
         else:
             schedule += '\n'
