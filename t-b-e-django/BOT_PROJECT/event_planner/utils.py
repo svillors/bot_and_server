@@ -34,8 +34,7 @@ def get_schedule():
     for session in sessions:
         schedule += (
             f'• {session} '
-            f'{session.start_session.strftime(
-                '%H:%M')} - {session.end_session.strftime('%H:%M')}\n'
+            f'{session.start_session.strftime('%H:%M')} - {session.end_session.strftime('%H:%M')}\n'
         )
         speaker_sessions = session.speaker_sessions.all().order_by('start_session')
         for speaker_session in speaker_sessions:
