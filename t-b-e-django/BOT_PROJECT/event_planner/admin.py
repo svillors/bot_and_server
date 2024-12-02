@@ -40,8 +40,6 @@ class SpeakerSessionAdmin(admin.ModelAdmin):
 
 @admin.action(description="Рассылка о изменении в расписании")
 def send_massage_to_all_users(modeladmin, request, queryset):
-
-    errors = []
     bot = TeleBot(TELEGRAM_BOT_TOKEN)
     users = User.objects.all()
     massage_text = get_schedule()
@@ -49,10 +47,8 @@ def send_massage_to_all_users(modeladmin, request, queryset):
     for user in users:
         try:
             bot.send_message(user.tg_id, massage_text)
-        except Exception as e:
-            errors.append(f"Не удалось отправить сообщение пользователю {
-                user.tg_id}: {str(e)}")
-            print(f"Ошибка для {user.tg_id}: {str(e)}")
+        except Exception:
+            pass
     modeladmin.message_user(
         request, "Сообщения отправлены всем пользователям!")
 
