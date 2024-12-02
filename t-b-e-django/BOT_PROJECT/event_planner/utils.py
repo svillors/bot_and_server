@@ -38,8 +38,7 @@ def get_schedule():
         speaker_sessions = session.speaker_sessions.all().order_by('start_session')
         for speaker_session in speaker_sessions:
             schedule += (
-                f'  - Доклад: {speaker_session} от {
-                    speaker_session.speaker.name} '
+                f'  - Доклад: {speaker_session} от {speaker_session.speaker.name} '
                 f'{speaker_session.start_session.strftime('%H:%M')} - {speaker_session.end_session.strftime('%H:%M')}\n'
             )
         else:
